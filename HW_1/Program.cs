@@ -1,16 +1,8 @@
-﻿Console.Write("Enter first number: ");
-int firstN = Convert.ToInt32(Console.ReadLine());
-Console.Write("Enter second number: ");
-int secondN = Convert.ToInt32(Console.ReadLine());
-    if (firstN > secondN)
-    {
-        Console.WriteLine("First number is bigger: ");
-        Console.Write("max = ");
-        Console.WriteLine(firstN);
-    }
-    else
-    {
-        Console.WriteLine("Second number is bigger");
-        Console.Write("max = ");
-        Console.WriteLine(secondN); 
-    }
+﻿Console.Write("Enter the 'N' number, please: ");
+int N = Convert.ToInt32(Console.ReadLine());
+int count = 2;
+while (count <= N)
+{
+    Console.WriteLine(count);
+    count = count +2;
+}
