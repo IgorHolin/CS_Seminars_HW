@@ -1,16 +1,18 @@
-﻿Console.Write("Enter first number: ");
+﻿Console.Write("Enter 1st number: ");
 int firstN = Convert.ToInt32(Console.ReadLine());
-Console.Write("Enter second number: ");
+Console.Write("Enter 2nd number: ");
 int secondN = Convert.ToInt32(Console.ReadLine());
-    if (firstN > secondN)
-    {
-        Console.WriteLine("First number is bigger: ");
-        Console.Write("max = ");
-        Console.WriteLine(firstN);
-    }
-    else
-    {
-        Console.WriteLine("Second number is bigger");
-        Console.Write("max = ");
-        Console.WriteLine(secondN); 
-    }
+Console.Write("Enter 3rd number: ");
+int thirdN = Convert.ToInt32(Console.ReadLine());
+if ( firstN > secondN && firstN > thirdN)
+{
+    Console.Write(firstN);
+}
+if ( secondN > firstN && secondN > thirdN)
+{
+    Console.Write(secondN);
+}
+if (thirdN > firstN && thirdN > secondN)
+{
+    Console.Write(thirdN);
+}
