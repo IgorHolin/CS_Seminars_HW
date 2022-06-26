@@ -1,22 +1,19 @@
-﻿// Задача 13: Напишите программу, которая выводит третью цифру заданного числа 
-// или сообщает, что третьей цифры нет.
+﻿// Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели
+// и проверяет, является ли этот день выходным.
 
-// 645 -> 5
+// 6 -> да
+// 7 -> да
+// 1 -> нет
 
-// 78 -> третьей цифры нет
-
-// 32679 -> 6
-
-// Поскольку числа может и не быть, наверное проще всего записать числа по очереди в массив
-// и выводить число с индексом [2], если числа не существует должен появиться Error
-// в общем решил не конвертировать в ввод с консоли в число 
-// и поигрался с преобразованиями из строки в массив
+//По пренадлежности промежутку, булевским выражением True/False оформил.
 
 
+Console.WriteLine("Enter the day number, please: ");
+int day = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine($"You've chosen {day} of the week");
 
-Console.WriteLine("Enter your number, please: ");
-string num = Console.ReadLine();
-Console.WriteLine("Your number is " + num);
-char[] numChar = num.ToCharArray();
-if (numChar.Length >= 3) { Console.WriteLine($"The third number is {numChar[2]}"); }
-else { Console.WriteLine("This number has no 3rd number"); }
+bool WeekendOrNot(int day)
+{
+    return (day > 5 && day <= 7);
+}
+Console.WriteLine(WeekendOrNot(day));
