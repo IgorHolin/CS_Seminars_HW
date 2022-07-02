@@ -12,3 +12,15 @@ bool PolyOrNot(string num)
 }
 
 Console.WriteLine(PolyOrNot(number));
+
+
+// Решение №2
+Console.Write("Enter the N number please: ");
+int N = Math.Abs(Convert.ToInt32(Console.ReadLine()));
+
+bool PolyOrNot(int num)
+{
+    return ((num%10) == (num/10000) && ((num/1000)%10 == (num%100)/10));
+}
+
+Console.WriteLine(PolyOrNot(N));
