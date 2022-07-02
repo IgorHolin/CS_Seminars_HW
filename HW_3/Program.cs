@@ -1,14 +1,24 @@
-﻿// Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
-// 14212 -> нет
-// 12821 -> да
-// 23432 -> да
+﻿// Напишите программу, которая принимает на вход координаты двух точек 
+// и находит расстояние между ними в 3D пространстве.
 
-Console.WriteLine("Enter the number please: ");
-string number = Console.ReadLine();
+// A (3,6,8); B (2,1,-7), -> 15.84
+// A (7,-5, 0); B (1,-1,9) -> 11.53
 
-bool PolyOrNot(string num)
-{
-    return (num[0] == num[4] && num[1] == num[3]);
-}
+// d = sqrt((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2
 
-Console.WriteLine(PolyOrNot(number));
+Console.Write("Enter x1: ");
+int x1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Enter y1: ");
+int y1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Enter z1: ");
+int z1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Enter x2: ");
+int x2 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Enter y2: ");
+int y2 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Enter z2: ");
+int z2 = Convert.ToInt32(Console.ReadLine());
+
+double d = Math.Round(Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2) + (Math.Pow(z2 - z1, 2))));
+
+Console.WriteLine($"Расстояние между точками приблизительно равно: {d}");
