@@ -4,7 +4,7 @@
 // 3, 5 -> 243 (3⁵)
 // 2, 4 -> 16
 
-
+// Тренирую функции
 
 
 double PowerOf(int num, int power)
