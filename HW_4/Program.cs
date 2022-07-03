@@ -17,7 +17,9 @@ void PrintArray(int[] arr)
     Console.WriteLine($"[{String.Join(",", arr)}]");
 }
   
+Console.Write("Enter the number of digits in array please: ");
+int amount = Convert.ToInt32(Console.ReadLine());
+int[] newArr = new int[amount];
 
-int[] newArr = new int[8];
 FillArray(newArr);
 PrintArray(newArr);
