@@ -1,23 +1,23 @@
-﻿// Задача 29: Напишите программу, которая задаёт массив из 8 элементов 
-// и выводит их на экран.
+﻿// Задача 27: Напишите программу, которая принимает на вход число 
+// и выдаёт сумму цифр в числе.
 
-// 1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
-// 6, 1, 33 -> [6, 1, 33]
+// 452 -> 11
+// 82 -> 10
+// 9012 -> 12
 
-//Попробовал заполняшки с рандомом через void-функции
+// Функции функции, практикуюсь :)
 
-
-void FillArray(int[] array)
+int sumOf(int num)
 {
-    for (int i = 0; i < array.Length; i++) array[i] = new Random().Next(0, 1000);
+    int result = 0;
+    while (num / 10 != 0)
+    {
+        result = result + (num % 10);
+        num = num / 10;
+    }
+    return result + num%10;
 }
 
-void PrintArray(int[] arr)
-{
-    Console.WriteLine($"[{String.Join(",", arr)}]");
-}
-  
-
-int[] newArr = new int[8];
-FillArray(newArr);
-PrintArray(newArr);
+Console.Write("Enter the number please: ");
+int number = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine($"The sum of digits in {number} is: {sumOf(number)}");
