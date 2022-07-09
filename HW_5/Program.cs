@@ -1,20 +1,22 @@
-﻿// Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами. 
-// Напишите программу, которая покажет количество чётных чисел в массиве.
+﻿// Задача 36: Задайте одномерный массив, заполненный случайными числами. 
+// Найдите сумму элементов, стоящих на нечётных позициях.
 
-// [345, 897, 568, 234] -> 2
+// [3, 7, 23, 12] -> 19
+// [-4, -6, 89, 6] -> 0
 
-Console.Write("Enter the size of array: ");
+Console.Write("Enter the size of array please: ");
 int arraySize = Convert.ToInt32(Console.ReadLine());
-int [] array = new int[arraySize];
-int evenCounter = 0;
+int[] newArray = new int[arraySize];
+int unevenSum = 0;
+
 for (int i = 0; i < arraySize; i++)
 {
-    array[i] = new Random().Next(100, 1000);
-    if (array[i] % 2 == 0) 
+    newArray[i] = new Random().Next(-10, 11);
+    if (i % 2 != 0) 
     {
-        Console.WriteLine($"{array[i]} is even!");   // можно просто каунтэр увеличивать, но чтоб проще было смотреть какие числа
-        evenCounter +=1;                             // решил сделать вывод
+        Console.WriteLine($"Element {newArray[i]} has uneven index {i}"); // можно без райтлайна и короче, но с выводом в консоли
+        unevenSum += newArray[i];                                         // получается удобно искать и считать :)
     }
 }
-Console.WriteLine($"The array looks like: [{String.Join(",", array)}]");
-Console.WriteLine($"The amount of even numbers in array is: {evenCounter}");
+Console.WriteLine($"Your array is: [{String.Join(",", newArray)}]");
+Console.WriteLine($"The sum of elements with uneven index is: {unevenSum}");
