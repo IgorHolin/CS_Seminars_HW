@@ -5,7 +5,7 @@
 // 1, -7, 567, 89, 223-> 3
 
 // Решил поиграть с циклом do ... while
-// Типа пусть пользователь реально вводит цифры с клавиатуры
+// Типа пусть пользователь реально вводит цифры с клавиатуры и пускай сохраняется массив введённых чисел
 // Первый опыт. Прошу строго не судить :)
 
 
@@ -13,7 +13,7 @@ Console.Write("Enter the number of digits please: ");
 int arraySize = Convert.ToInt32(Console.ReadLine());
 int[] array = new int[arraySize];
 int counter = 0;
-int positiveSum = 0;
+int positiveAmount = 0;
 
 do
 {
@@ -27,7 +27,7 @@ Console.WriteLine($"Array: [{String.Join(",", array)}]");
 
 for(int index = 0; index < arraySize; index++)
 {
-    if (array[index] > 0) positiveSum += array[index];
+    if (array[index] > 0) positiveAmount ++;
 }
 
-Console.WriteLine($"The sum of positive digits in Array is: {positiveSum}");
+Console.WriteLine($"The sum of positive digits in Array is: {positiveAmount}");
