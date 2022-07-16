@@ -1,14 +1,11 @@
-﻿// Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве
-// и возвращает значение этого элемента или же указание, что такого элемента нет.
+﻿// Задача 52. Задайте двумерный массив из целых чисел.
+// Найдите среднее арифметическое элементов в каждом столбце.
 
 // Например, задан массив:
-
 // 1 4 7 2
 // 5 9 2 3
 // 8 4 2 4
-
-// 17 -> такого числа в массиве нет
-// Решал по нахождению числа под введённым индексом и функциями (давно не делал)
+// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
 Console.Write("Set the width of matrix: ");
 int rows = Convert.ToInt32(Console.ReadLine());
@@ -29,25 +26,22 @@ void FillAndPrintMatrix(int[,] matr)
     }
 }
 
-void InOrNot(int[,] mat, int row, int column)
-
+void FindAverage(int[,] mat)
 {
-    if (row < mat.GetLength(0) && column < mat.GetLength(1))
+    double[] outArr = new double[mat.GetLength(1)];
+    double sum = 0;
+    for (int i = 0; i < mat.GetLength(0); i++)
     {
-        for (int i = 0; i < mat.GetLength(0); i++)
+        for (int j = 0; j < mat.GetLength(1); j++)
         {
-            for (int j = 0; j < mat.GetLength(1); j++)
-            {
-                if (i == row && j == column) Console.WriteLine($"The digit under this index is: {mat[i, j]}");
-            }
+            sum = sum + mat[j, i];
+            
         }
+        outArr[i] = Math.Round(sum / mat.GetLength(0), 2);
+        sum = 0;
     }
-    else Console.WriteLine("Number doesnt exist");
+    Console.WriteLine($"Среднее арифметическое каждого столбца: {String.Join(";  ", outArr)}");
 }
 
-    FillAndPrintMatrix(matrix);
-    Console.Write("Enter the first index: ");
-    int firstIndex = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Enter the second index: ");
-    int secondIndex = Convert.ToInt32(Console.ReadLine());
-    InOrNot(matrix, firstIndex, secondIndex);
+FillAndPrintMatrix(matrix);
+FindAverage(matrix);
