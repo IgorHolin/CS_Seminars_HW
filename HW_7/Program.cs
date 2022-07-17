@@ -28,19 +28,16 @@ void FillAndPrintMatrix(int[,] matr)
 
 void FindAverage(int[,] mat)
 {
-    double[] outArr = new double[mat.GetLength(1)];
     double sum = 0;
-    for (int i = 0; i < mat.GetLength(0); i++)
+    for (int i = 0; i < mat.GetLength(1); i++)
     {
-        for (int j = 0; j < mat.GetLength(1); j++)
+        for (int j = 0; j < mat.GetLength(0); j++)
         {
-            sum = sum + mat[j, i];
-            
+            sum += mat[j, i];
         }
-        outArr[i] = Math.Round(sum / mat.GetLength(0), 2);
-        sum = 0;
+        Console.WriteLine($"Среднее арифмитическое {i + 1} солбца равно {sum / mat.GetLength(0)}");
     }
-    Console.WriteLine($"Среднее арифметическое каждого столбца: {String.Join(";  ", outArr)}");
+
 }
 
 FillAndPrintMatrix(matrix);
