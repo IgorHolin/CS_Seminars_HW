@@ -1,15 +1,20 @@
-﻿// Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+﻿// Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
 
-// Например, задан массив:
+// Например, заданы 2 массива:
 
-// 1 4 7 2
-// 5 9 2 3
-// 8 4 2 4
-// 5 2 6 7
+// 1 4 7 2       1 5 8 5
+// 5 9 2 3   и   4 9 4 2
+// 8 4 2 4       7 2 2 6
+// 5 2 6 7       2 3 4 7
 
-// Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
+// Их произведение будет равно следующему массиву:
 
-// Получаем массив, проходимся итерацией по строкам, записываем сумму элементов в счётчик, сравниваем и меньший оставляем -> вывод.
+// 1 20 56 10
+// 20 81 8 6
+// 56 8 4 24
+// 10 6 24 49
+
+// Строго говоря тут в примере подано не произведение 2-ух матриц а произведение членов матриц с одинаковыми индексами, так что решал так же.
 
 Console.Write("Enter the amount of rows in matrix: ");
 int rows = Convert.ToInt32(Console.ReadLine());
@@ -41,31 +46,25 @@ void PrintMatrix(int[,] matrx)  //вывели матрицу
     }
 }
 
-void MinorSumString(int[,] mat) // сравнили + вывод
+void MultipliedMatrix(int[,] firstMatr, int[,] secondMatr)
 {
-    int index = 0;
-    int minSum = int.MaxValue;
-    for (int i = 0; i < mat.GetLength(0); i++)
-    {
-        int temp = 0;
-        for (int j = 0; j < mat.GetLength(1); j++)
+    int [,] resultMatr = new int[firstMatr.GetLength(0), firstMatr.GetLength(1)];
+        for (int i = 0; i < firstMatr.GetLength(0); i++)
         {
-            temp += mat[i, j];
+            for (int j = 0; j < firstMatr.GetLength(1); j++)
+            {
+             resultMatr[i,j] = firstMatr[i,j] * secondMatr[i,j];
+             Console.Write(resultMatr[i,j] + "\t"); 
+            }
+            Console.WriteLine();
         }
-        if (temp < minSum)
-        {
-            minSum = temp;
-            index = i;
-        }
-    }
-    Console.WriteLine();
-    for (int k = 0; k < mat.GetLength(1); k++)
-    {
-        Console.Write(mat[index, k] + "\t");
-    }
+
 }
 
-
-int[,] newMatrix = GetMatrix(rows, columns);
-PrintMatrix(newMatrix);
-MinorSumString(newMatrix);
+int[,] firstMatrix = GetMatrix(rows, columns);
+int[,] secondMatrix = GetMatrix(rows, columns);
+PrintMatrix(firstMatrix);
+Console.WriteLine();
+PrintMatrix(secondMatrix);
+Console.WriteLine();
+MultipliedMatrix(firstMatrix,secondMatrix);
