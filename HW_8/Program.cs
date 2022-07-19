@@ -47,18 +47,25 @@ void PrintMatrix(int[,] matrx)  //вывели матрицу
 
 void SortMatrix(int[,] matr)
 {
-    int maxDigit = matr[0, 0];
+    int maxDigit;
+    int maxIndex = 0;
     for (int i = 0; i < matr.GetLength(0); i++)
     {
-        for (int j = 0; j < matr.GetLength(1) - 1; j++)
+        for (int j = 0; j < matr.GetLength(1); j++)
         {
-            if (matr[i, j] < matr[i, j + 1])
+            for (int k = i; k < matr.GetLength(1) ; k++)
             {
-                int temp = matr[i, j];
-                matr[i, j] = matr[i, j + 1];
-                matr[i, j + 1] = temp;
+                for (int n = j; n < matr.GetLength(1) ; n++)
+                {
+                    if (matr[k,n] > matr[k,n+1])
+                    {
+                        int temp = matr[k,n];
+                        matr[k,n] = matr[k,n+1];
+                        matr[k,n+1] = temp;
+                    }
+                }
             }
-            Console.Write(matr[i, j] + "\t");
+            Console.Write(matr[i,j] + "\t");
         }
         Console.WriteLine();
     }
