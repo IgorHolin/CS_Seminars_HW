@@ -48,10 +48,13 @@ void PrintMatrix(int[,] matrx)  //вывели матрицу
 
 void MultipliedMatrix(int[,] firstMatr, int[,] secondMatr)
 {
-    int [,] resultMatr = new int[firstMatr.GetLength(0), firstMatr.GetLength(1)];
-        for (int i = 0; i < firstMatr.GetLength(0); i++)
+    int resulMatrixRow = Math.Max(firstMatr.GetLength(0),secondMatr.GetLength(0));
+    int resulMatrixColumns = Math.Max(firstMatr.GetLength(1),secondMatr.GetLength(1));
+    int [,] resultMatr = new int[resulMatrixRow, resulMatrixColumns];
+
+        for (int i = 0; i < resulMatrixRow; i++)
         {
-            for (int j = 0; j < firstMatr.GetLength(1); j++)
+            for (int j = 0; j < resulMatrixColumns; j++)
             {
              resultMatr[i,j] = firstMatr[i,j] * secondMatr[i,j];
              Console.Write(resultMatr[i,j] + "\t"); 
