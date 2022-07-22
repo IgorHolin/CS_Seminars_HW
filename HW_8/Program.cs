@@ -1,60 +1,45 @@
-﻿// Задача 62. Заполните спирально массив 4 на 4.
+﻿// Треугольник Паскаля
 
-// Например, на выходе получается вот такой массив:
- 
-//      1 2 3 4
-//      12 13 14 5
-//      11 16 15 6
-//      10 9 8 7
+// Честно говоря не придумал выхода так чтоб заполнять только треугольник
+// В теории если мы заполняем слева направо и сверху вниз, то каждый раз
+// нужно уменьшать счётчик левой границы, будет сначала 3 числа потом 2 потом 1 итд.
+// существуют подозрения что нужно в 4 цикла как 62-ую задачу делать, идти от краёв к центру
+// но времени на реализацию задачи уже не было, тк я уезжаю на сутки
 
-// Идём спиралью и постепенно заполняем. Т.к мы идём от краёв к центру будем увеличивать левый и верхний индексы
-// и уменьшать правый и нижний
+Console.Write("Enter the length of the side please: ");
+int n = Convert.ToInt32(Console.ReadLine());
+int[,] pascal = new int[n, n];
 
-Console.Write("Enter the length of matrix side: ");
-int size = Convert.ToInt32(Console.ReadLine());
-int[,] matrix = new int[size, size]; 
 
-int counter = 1;
-
-int upperIndex = 0;
-int rightIndex = size - 1;
-int lowerIndex = size - 1;
-int leftIndex = 0;
-
-while (lowerIndex >= upperIndex || leftIndex <= rightIndex) //<-------условие выхода из цикла - пока индексы не столкнутся грубо говоря
+int upper = 0;
+int left = 0;
+int right = n - 1;
+for (int i = 0; i < n; i++)
 {
-    for (int i = upperIndex; i <= rightIndex; i++) //<---------------заполнили верхний ряд
-    {
-        matrix[upperIndex, i] = counter++;
-    }
-    upperIndex++; //<--- см. строку 10 и 11
-
-    for (int j = upperIndex; j <= lowerIndex; j++) //<---------------заполнили правый столбец, начинаем со 2ой строки 
-    {
-        matrix[j, rightIndex] = counter++;
-    }
-    rightIndex--; //<--- см. строку 10 и 11
-
-    for (int k = rightIndex; k >= leftIndex; k--) //<-----------заполнили нижний ряд, начиная с "последняя строка" - 1  
-    {
-        matrix[lowerIndex, k] = counter++;
-    }
-    lowerIndex--; //<--- см. строку 10 и 11
-
-    for (int n = lowerIndex; n >= upperIndex; n--) //<------------заполнили левый стобец, начиная с "последний ряд" - 1
-    {
-        matrix[n, leftIndex] = counter++; //<--- см. строку 10 и 11
-    }
-    leftIndex++;
+    pascal[upper, i] = 1;
+}
+for (int j = 0; j < n; j++)
+{
+    pascal[j, left] = 1;
 }
 
-for (int i = 0; i < size; i++)
+
+//Алгоритм заполнения
+for (int k = 1; k < n; k++)
 {
-    for (int j = 0; j < size; j++)
+    for (int l = 1; l < т; l++)
     {
-        Console.Write(matrix[i, j] + "\t");
+        pascal[k, l] = pascal[k, l - 1] + pascal[k - 1, l];
     }
-    Console.WriteLine();
-    Console.WriteLine();
 }
 
+
+// Вывод
+for (int i = 0; i < n; i++)
+{
+    for (int j = 0; j < n; j++)
+    {
+        Console.Write(pascal[i, j] + " ");
+    }
+    Console.WriteLine();
+}
